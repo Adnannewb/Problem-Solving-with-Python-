@@ -28,6 +28,7 @@ def reverse(nums,left,right):
     
 def rotateright(nums,k):
     n=len(nums)
+    k=k%n
     reverse(nums,n-k,n-1)
     reverse(nums,0,n-k-1)
     reverse(nums,0,n-1)
