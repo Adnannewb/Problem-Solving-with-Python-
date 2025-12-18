@@ -1,5 +1,6 @@
-nums=[1,2,3,3,3,3,3,5,6,8,9,9,10]
+# nums=[1,2,3,3,3,3,3,5,6,8,9,9,10]
 
+nums=[5,7,7,8,8,10]
 #Bruteforce Solution
 
 # def occurance(nums,target):
@@ -14,7 +15,7 @@ nums=[1,2,3,3,3,3,3,5,6,8,9,9,10]
 #             break
 #     return [first,last]
 
-# print(occurance(nums,3))
+# print(occurance(nums,8))
 
 
 #Optimal Solution
@@ -23,7 +24,7 @@ def lowerbound(nums,target):
     n=len(nums)
     l_bound=-1
     low,high=0,n-1
-    while(low<high):
+    while(low<=high):
         mid=(low+high)//2
         if(nums[mid]>=target):
             l_bound=mid
@@ -36,7 +37,7 @@ def upperbound(nums,target):
     n=len(nums)
     u_bound=n
     low,high=0,n-1
-    while(low<high):
+    while(low<=high):
         mid=(low+high)//2
         if(nums[mid]>target):
             u_bound=mid
@@ -47,9 +48,10 @@ def upperbound(nums,target):
     
 def occurance(nums,target):
     l_bound=lowerbound(nums,target)
+    
     if(l_bound==-1):
         return 0
     u_bound=upperbound(nums,target)
     return [l_bound,u_bound-1]
 
-print(occurance(nums,3))
+print(occurance(nums,8))
